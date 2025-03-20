@@ -1,7 +1,6 @@
 import requests
 
 
-
 def personagem_digitado():
         print('Digite o nome do personagem...')
         personagem = input('Nome: ')
@@ -58,3 +57,4 @@ html_inserido = gerar_html(personagem_achado)
 
 with open('indexas.html', 'w', encoding='utf-8')as arquivo:
      arquivo.write(html_inserido)
+

@@ -22,7 +22,18 @@ def consulta_nome(personagem):
                 return None
     else:
           print('Erro na API.')
- 
+
+def obter_episodios(episodios_urls):
+     episodios = []
+     for url in episodios_urls:
+          resposta = requests.get(url)
+          if resposta.status_code == 200:
+               dados = resposta.json()
+               episodios.append(dados['name'])
+          else:          
+               episodios.append('Episodio Desconhecido')
+     return episodios
+
         
 def gerar_html(personagem):
      if personagem:

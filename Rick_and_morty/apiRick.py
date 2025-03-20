@@ -1,4 +1,5 @@
 import requests
+import webbrowser
 
 
 def personagem_digitado():
@@ -37,7 +38,9 @@ def obter_episodios(episodios_urls):
         
 def gerar_html(personagem):
      if personagem:
-        return f"""
+        episodios = obter_episodios(personagem['episode'])
+        episodios_lista = "".join(f"<li>{ep}</li>" for ep in episodios)
+     return f"""
         <!DOCTYPE html>
         <html lang="pt">
         <head>
@@ -56,6 +59,12 @@ def gerar_html(personagem):
         <p><strong>Espécie:</strong> {personagem['species']}</p>
         <p><strong>Gênero:</strong> {personagem['gender']}</p>
 
+        <h3>Episodios em que apareceu:<h3>
+        </ul>
+               {episodios_lista}
+        </ul>
+
+
         </body>
         </html>
         """
@@ -68,4 +77,6 @@ html_inserido = gerar_html(personagem_achado)
 
 with open('indexas.html', 'w', encoding='utf-8')as arquivo:
      arquivo.write(html_inserido)
+
+webbrowser.open('indexas.html')
 

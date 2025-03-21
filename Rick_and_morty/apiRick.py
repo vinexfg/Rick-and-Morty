@@ -33,8 +33,9 @@ def obter_episodios(episodios_urls):
                episodios.append(dados['name'])
           else:          
                episodios.append('Episodio Desconhecido')
+     print(episodios)
      return episodios
-
+     
         
 def gerar_html(personagem):
      if personagem:
